@@ -1,0 +1,5 @@
+region  = "europe-west3"
+project_id = "my-production-project"
+ip_cidr_range = "10.0.1.0/24"
+location = "europe-west3"
+jump_internal_ip = "10.0.1.7"

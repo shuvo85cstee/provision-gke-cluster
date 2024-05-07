@@ -1,0 +1,33 @@
+---
+# tasks file for deploy_nginx_web
+- name: Install Nginx Web Server
+  become: yes
+  apt:
+    name: nginx
+    state: latest
+
+- name: "Copy Nginx config"
+  become: yes
+  copy:
+    src: default
+    dest: "{{ destin_file }}/kadmos.conf"
+    mode: 0755
+  notify: Restart nginx
+
+- name: "Copy SSL Cert"
+  become: yes
+  copy:
+    src: MyCertificate.crt
+    dest: /etc/ssl/certs/MyCertificate.crt
+    mode: 0755
+  notify: Restart nginx
+
+- name: "Copy SSL Key"
+  become: yes
+  copy:
+    src: MyKey.key 
+    dest: /etc/ssl/certs//MyKey.key
+    mode: 0400
+  notify: Restart nginx
+
+

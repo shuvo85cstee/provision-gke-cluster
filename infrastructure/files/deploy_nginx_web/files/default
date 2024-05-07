@@ -1,0 +1,22 @@
+upstream kadmos_gke {
+    server 10.0.0.16:30343;
+    server 10.0.0.20:30343;
+    server 10.0.0.15:30343;
+}
+
+server {
+    listen              443 ssl;
+    server_name         kadmos.node-demo.io;
+    ssl_certificate     /etc/ssl/certs/MyCertificate.crt;
+    ssl_certificate_key /etc/ssl/certs/MyKey.key;
+    #underscores_in_headers on;
+    location / {
+            # Check if the incoming request has the specific headers
+             if ($http_x_case_study = "kadmos") {
+                # Proxy the request to the upstream server
+                proxy_pass http://kadmos_gke;
+            }
+             return 403;
+        }
+
+}
