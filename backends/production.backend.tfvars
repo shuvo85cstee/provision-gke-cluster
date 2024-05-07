@@ -1,4 +1,4 @@
-bucket = "assesment-tf-remote-state"
+bucket = "gcp_bucket_name"
 prefix = "terraform.tfstate"
 
 

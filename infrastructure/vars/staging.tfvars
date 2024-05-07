@@ -1,5 +1,5 @@
-region  = "europe-west3"
-project_id = "my-production-project"
+region  = "gcp_region"
+project_id = "gcp_bucket"
 ip_cidr_range = "10.0.1.0/24"
-location = "europe-west3"
+location = "gcp_region"
 jump_internal_ip = "10.0.1.7"
